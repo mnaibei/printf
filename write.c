@@ -1,13 +1,13 @@
 #include "holberton.h"
 
 /**
- * _write_char - writes the character c to stdout
- * @c: The character to print
+ * print_c - print a character
+ * @arg: the va_list argument
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * Return: the number of bytes printed
  */
-int _write_char(char c)
+
+int print_c(va_list arg)
 {
-	return (write(1, &c, 1));
+	return (_putchar(va_arg(arg, int)));
 }
