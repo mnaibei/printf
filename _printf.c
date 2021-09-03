@@ -1,45 +1,36 @@
+#include <stdlib.h>
+#include <stdarg.h>
 #include "holberton.h"
+
 /**
- * _printf - print arguments according to a format
- * @format: a string composed of ordinary characters and format specifications
- *
- * Return: Upon success, this returns the number of characters printed.
- * If an output error is encountered, -1 is returned instead.
+ * _printf - function that prints anything
+ * @format: list of types of arguments passed to the function
+ * @...: number of arguments
+ * Return: modifiers
  */
 int _printf(const char *format, ...)
 {
 va_list args;
-int (*print_func)(va_list);
-int char_count, last_ret_val;
-if (!format)
-return (-1);
+int mods;
+
+mod_t  fmt_list[] = {
+{"c", print_char},
+{"i", print_digit},
+{"d", print_digit},
+{"s", print_string},
+{"R", print_rot13},
+{NULL, NULL}
+};
+
 va_start(args, format);
-for (char_count = 0; *format; ++format)
+
+if (format == NULL)
 {
-if (*format == '%')
-{
-if (!format[1])
 return (-1);
-print_func = get_print_any_func(format[1]);
-if (print_func)
-{
-last_ret_val = print_func(args);
-if (last_ret_val < 0)
-return (-1);
-char_count += last_ret_val;
-++format;
-continue;
 }
-last_ret_val = _putchar(*format++);
-if (last_ret_val < 0)
-return (-1);
-char_count += last_ret_val;
-}
-last_ret_val = _putchar(*format);
-if (last_ret_val < 0)
-return (-1);
-char_count += last_ret_val;
-}
+
+mods = print_modifiers(format, args, fmt_list);
+
 va_end(args);
-return (char_count);
+return (mods);
 }

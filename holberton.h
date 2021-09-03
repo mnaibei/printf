@@ -1,40 +1,38 @@
 #ifndef HOLBERTON_H
 #define HOLBERTON_H
 
-#include <stdio.h>
 #include <stdarg.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <limits.h>
 
 /**
- * struct _print_func - map a print function to a conversion specifier
- * @specifier: the conversion specifier
- * @f: the function to call to format and print output
+ * struct modifiers - Defines a specifier to data types
+ * @mod: type of data type
+ * @func_mod: pointer to function that prints data types
+ * according to their notation
  */
-typedef struct _print_func
+typedef struct modifiers
 {
-char specifier;
-int (*f)(va_list);
-} print_func;
+char *mod;
+int (*func_mod)(va_list argptr);
+} mod_t;
 
-int _putchar(char c);
+/* _printf.c prototypes */
 int _printf(const char *format, ...);
-int print_c(va_list);
-int print_s(va_list);
-int print_d(va_list);
-int print_x(va_list);
-void _print_x(unsigned int n, int *count);
-int print_X(va_list);
-void _print_X(unsigned int n, int *count);
-int print_o(va_list);
-void _print_o(unsigned int n, int *count);
-int print_u(va_list);
-void _print_u(unsigned int n, int *count);
-void _print_d(int n, int *count);
-int print_percent(va_list);
-int (*get_print_any_func(char c))(va_list);
-int print_b(va_list);
-void _print_b(unsigned int n, int *count);
-int print_p(va_list);
-void _print_p(unsigned long int n, int *count);
-int print_S(va_list);
+int print_modifiers(const char *format, va_list argptr, mod_t *fmt_list);
 
-#endif /* HOLBERTON_H */
+/* mod_funcs.c prototypes */
+int print_char(va_list argptr);
+int print_digit(va_list argptr);
+int print_string(va_list argptr);
+int print_rot13(va_list argptr);
+/*Print unsigned int*/
+
+/* int print_unsigned(va_list argptr, *func_mod);*/
+
+/* _putchar.c prototype */
+int _putchar(char c);
+
+#endif

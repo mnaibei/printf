@@ -1,1 +1,1 @@
-#printf
+This is the ALX printf project.
