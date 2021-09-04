@@ -1,35 +1,47 @@
-printf Test Files
-General info
-How to use
-What do the results mean?
-General info
-Use these files to test the following specifiers that are used in the Holberton School _printf project.
+0x11. C - printf
+Overview
+The goal of this project is to create a custom printf function
 
-% - percent_test.c
-%c - char_test.c
-%s - string_test.c
-%d - int_test.c
-%i - int_test.c
-%u - u_test.c
-%o - o_test.c
-%x - x_test.c
-%X - X_test.c
-%p - p_test.c
-How to use
-Clone repository to your local testfile directory
-Use one test file at a time
-Compile ALL of your .c files with the following gcc flags:
-gcc -Werror -Wextra -Wall -pedantic -Wno-format *.c
-Execute the produced a.out file
-What do the results mean?
-These files compare the return values of our new _printf to the return values of standard printf
-If the return values are different, the output will be a list of numbers that refer to the edge case which your _printf has failed to produce the correct output.
-If _printf and standard printf return values MATCH:
-NO ERRORS DETECTED
-If _printf and standard printf return values DO NOT MATCH:
-Error on array member: 3
-If the above message is seen, '3' indicates which edge case has failed.
-Refer to the comments above array at the end of variable declarations IN THE TEST FILE
-/* 1 2 3 4 5 6 7 */
-{0, INT_MAX, INT_MIN, 100, 99, -100, -99};
-In this case, 3 refers to the edge case INT_MIN
+Requirements
+Allowed editors: vi, vim, emacs
+All your files will be compiled on Ubuntu 14.04 LTS
+Your programs and functions will be compiled with gcc 4.8.4 using the flags -Wall -Werror -Wextra and -pedantic
+All your files should end with a new line
+Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
+You are not allowed to use global variables
+No more than 5 functions per file
+In the following examples, the main.c files are shown as examples. You can use them to test your functions, but y
+ou don’t have to push them to your repo (if you do we won’t take them into account). We will use our own main.c fil
+es at compilation. Our main.c files might be different from the one shown in the examples
+The prototypes of all your functions should be included in your header file called holberton.h
+Don’t forget to push your header file
+All your header files should be include guarded
+Authorized functions and macros
+write
+malloc
+free
+va_start
+va_end
+va_copy
+va_arg
+Tasks
+Format specifier	Operation
+%c	Prints the value of a type char argument
+%i	Prints the value of an type integer argument
+%d	Prints the value of an type integer floating argument
+%s	Prints the value of an *char argument
+%%	Prints only the modulo
+%b	Converts an integer argument to binary
+Files
+Filename	Description
+README.md	General description of the repository
+printf.c	Most important function
+holberton.h	Header file
+man_3_printf	Man page for the _printf function
+op_funcs.c	First Functions that writes Specific Formats
+op_funcs2.c	Second Functions that writes Specific Formats
+buffer_int.c	Buffer Functions
+buffer_ops.c	First Buffer Options
+buffer_ops2.c	Second Buffer Options
+opid.c	Main Structures
+main.c	Test file

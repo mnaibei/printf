@@ -1,45 +1,36 @@
-#include "holberton.h"
 #include <stdlib.h>
+#include <stdarg.h>
+#include "holberton.h"
 
 /**
- * _printf - prints any string with certain flags for modification
- * @format: the string of characters to write to buffer
- * Return: an integer that counts how many writes to the buffer were made
+ * _printf - function that prints anything
+ * @format: list of types of arguments passed to the function
+ * @...: number of arguments
+ * Return: modifiers
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, var = 0;
-	va_list v_ls;
-	buffer *buf;
+va_list args;
+int mods;
 
-	buf = buf_new();
-	if (buf == NULL)
-		return (-1);
-	if (format == NULL)
-		return (-1);
-	va_start(v_ls, format);
-	while (format[i])
-	{
-		buf_wr(buf);
-		if (format[i] == '%')
-		{
-			var = opid(buf, v_ls, format, i);
-			if (var < 0)
-			{
-				i = var;
-				break;
-			}
-			i += var;
-			continue;
-		}
-		buf->str[buf->index] = format[i];
-		buf_inc(buf);
-		i++;
-	}
-	buf_write(buf);
-	if (var >= 0)
-		i = buf->overflow;
-	buf_end(buf);
-	va_end(v_ls);
-	return (i);
+mod_t  fmt_list[] = {
+{"c", print_char},
+{"i", print_digit},
+{"d", print_digit},
+{"s", print_string},
+{"R", print_rot13},
+{NULL, NULL}
+};
+
+va_start(args, format);
+
+if (format == NULL)
+{
+return (-1);
+}
+
+mods = print_modifiers(format, args, fmt_list);
+
+va_end(args);
+return (mods);
 }
