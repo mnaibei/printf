@@ -1,32 +1,21 @@
-.TH man 3 "27July 2021" "0.01" "_printf man page"
-
+.TH _printf "17 Mar 2020" "_printf man page"
 .SH NAME
-.B _printf - This is a recreation of the printf() function.
-
+.B _printf
+- prints the character(s)
 .SH SYNOPSIS
-- To use this function, use the "holberton.h" header file
+#include "holberton.h"
+int _printf(const char *format, ...);
 .SH DESCRIPTION
-- The _printf function produces output based on format specifiers described below.
-.SH CONVERSION SPECIFIERS
-.B c
-- Prints a character
-.br
-.B i,d
-- Prints an integer/decimal
-.br
-.B s
-- Prints a string
-.br
-.B %
-- Prints a percentage, the character is not converted
-.SH RETURN VALUE
-- If successful, the function returns printed characters not including the terminating null character
-.SH SEE ALSO
-- printf(3)
-.br
-.SH BUGS
-There are no known bugs.
-
-.SH "AUTHOR"
-George Okumu and Moreen Nyaga
-
+The printf() function prints output of a string, character, or integer. The printf function is able to print a string in quotes.
+.SH OPTIONS
+If the string has a '%' it looks to the following character.
+If it has a 'c' it will print a char variable.
+if it is a 's' it will print a string variable.
+if it is a 'i' it will print an integer value.
+if it is a 'd' it will print a integer.
+if it is a '%' it will print a modulo.
+if it is a 'b' it will print a unsigned int converted to binary.
+.SH RETURN
+The function will returen the number of characters printed. If unsuccessful the function will return null.
+.SH AUTHOR
+Mucha Naibei
